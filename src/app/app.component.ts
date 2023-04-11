@@ -1,5 +1,5 @@
 import { Component, NgModule } from '@angular/core';
-import { Model } from './model';
+import { Model, TodoItem } from './model';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -19,5 +19,11 @@ export class AppComponent {
 
   getItems(){
     return this.model.items.filter(item => !item.action)
+  }
+
+  addItem(value: any){
+    if(value!=""){
+      this.model.items.push(new TodoItem(value,false));
+    }
   }
 }
