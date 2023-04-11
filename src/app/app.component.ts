@@ -1,17 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+import { Model } from './model';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  title = 'Todo App';
-  user = 'Emre';
-  datas =  [
-    {description: "Kahvaltı", action:"No"},
-    {description: "Spor", action:"No"},
-    {description: "Fatura", action:"No"},
-    {description: "Sinema", action:"No"},
-  ];
+  model = new Model();
+
+  getName(){
+    return this.model.user
+  }
+
+  getItems(){
+    return this.model.items.filter(item => !item.action)
+  }
 }
