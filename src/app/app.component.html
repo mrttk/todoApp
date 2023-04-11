@@ -1,27 +1,32 @@
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-5 align-items-center">
-        <h3 class="bg-primary text-white p-3">
-          [{{getName()}}] To Do List
+      <div class="col-10 align-items-center">
+        <h3 class="bg-primary text-white aling p-3">
+          [{{getName()}}] To-Do List
         </h3>
         <div class="input-group">
-          <input type="text" class="form-control">
+          <input type="text" #todoText class="form-control me-2">
           <div class="input-group-append">
-            <button class="btn btn-primary">Add</button>
+            <button class="btn btn-primary" (click)="addItem(todoText.value); todoText.value='';">Add</button>
           </div>
-
-          <table class="table table table-stripped table-bordered">
+        </div>
+        <div class="custom-control custom-checkbox custom-checkbox my-1">
+          <input type="checkbox" [(ngModel)]="isDisplay" class="custom-control" name="" id="displayAll">
+          <label for="displayAll" class="custom-control-label">Display All</label>
+        </div>
+          <table class="table table table-stripped table-bordered text-center mt-2">
             <thead>
               <tr>
-                <th></th>
-                <th>Description</th>
-                <th>Action</th>
+                <th class="col-1">#</th>
+                <th class="col-9 text-start">Description</th>
+                <th class="col-1">Action</th>
+                <th class="col-1"></th>
               </tr>
             </thead>
               <tbody>
                 <tr *ngFor="let item of getItems(); let i = index;">
                   <td>{{i+1}}</td>
-                  <td>{{item.description}}</td>
+                  <td class="text-start">{{item.description}}</td>
                   <td>
                     <input type="checkbox" [(ngModel)]="item.action">
                   </td>
@@ -32,7 +37,7 @@
                 </tr>
               </tbody>
           </table>
-        </div>
+        
       </div>
     </div>
   </div> 

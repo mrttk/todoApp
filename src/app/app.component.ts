@@ -1,5 +1,5 @@
 import { Component, NgModule } from '@angular/core';
-import { Model } from './model';
+import { Model, TodoItem } from './model';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -12,12 +12,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 export class AppComponent {
   model = new Model();
+  isDisplay = false;
 
   getName(){
     return this.model.user
   }
 
   getItems(){
+    if (this.isDisplay) {
+      return this.model.items;
+    }
     return this.model.items.filter(item => !item.action)
+  }
+
+  addItem(value: any){
+    if(value!=""){
+      this.model.items.push(new TodoItem(value,false));
+    }
   }
 }
