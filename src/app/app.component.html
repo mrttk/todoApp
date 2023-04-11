@@ -9,6 +9,11 @@
           <div class="input-group-append">
             <button class="btn btn-primary" (click)="addItem(todoText.value); todoText.value='';">Add</button>
           </div>
+        </div>
+        <div class="custom-control custom-checkbox custom-checkbox my-1">
+          <input type="checkbox" [(ngModel)]="isDisplay" class="custom-control" name="" id="displayAll">
+          <label for="displayAll" class="custom-control-label">Display All</label>
+        </div>
           <table class="table table table-stripped table-bordered text-center mt-2">
             <thead>
               <tr>
@@ -32,7 +37,7 @@
                 </tr>
               </tbody>
           </table>
-        </div>
+        
       </div>
     </div>
   </div> 

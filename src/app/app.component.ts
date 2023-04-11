@@ -12,12 +12,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 export class AppComponent {
   model = new Model();
+  isDisplay = false;
 
   getName(){
     return this.model.user
   }
 
   getItems(){
+    if (this.isDisplay) {
+      return this.model.items;
+    }
     return this.model.items.filter(item => !item.action)
   }
 
